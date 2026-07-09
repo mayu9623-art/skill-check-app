@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>スキルチェック</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>スキルチェッククイズ</h1>
+
+    <p class="message">
+        Java・Spring Boot・SQLの知識をチェックしてみましょう！
+    </p>
+
+    <a th:href="@{/quiz}" class="start-btn">
+        クイズを始める
+    </a>
+
+</div>
+
+</body>
+</html>

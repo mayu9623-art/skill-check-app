@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<title>結果</title>
+</head>
+<body>
+
+<div class="container">
+
+<h1>結果発表</h1>
+
+<div class="result">
+    <p th:text="${score} + ' / ' + ${total} + ' 問正解！'"></p>
+</div>
+
+<a href="/">トップへ戻る</a>
+
+</div>
+
+</body>
+</html>
