@@ -1,5 +1,5 @@
-# 1. ビルド環境
-FROM gradle:7.6-jdk8 AS build
+# 1. ビルド環境（Gradleのバージョンを少し下げて互換性を高めます）
+FROM gradle:6.9.4-jdk8 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle build -x test --no-daemon
