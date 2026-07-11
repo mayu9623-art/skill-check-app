@@ -1,12 +1,12 @@
-FROM eclipse-temurin:21-jdk
+# 1. ビルド環境（Java 8 の Gradle を使用）
+FROM gradle:7.6-jdk8 AS build
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build -x test --no-daemon
 
-WORKDIR /app
-
-COPY . .
-
-RUN chmod +x gradlew
-RUN ./gradlew build -x test
-
+# 2. 実行環境（Java 8 の軽量環境を使用）
+FROM openjdk:8-jre-slim
 EXPOSE 8080
+COPY --from=build /home/gradle/src/build/libs/*.jar app.jar
 
 ENTRYPOINT ["java","-jar","build/libs/Skillcheck-0.0.1-SNAPSHOT.jar"]
