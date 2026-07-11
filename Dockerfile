@@ -4,9 +4,10 @@ COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle build -x test --no-daemon
 
-# 2. 実行環境（Java 8 の軽量環境を使用）
-FROM openjdk:8-jre-slim
+# 2. 実行環境（廃止されたopenjdkの代わりに、最新のeclipse-temurinを使用）
+FROM eclipse-temurin:8-jre
 EXPOSE 8080
 COPY --from=build /home/gradle/src/build/libs/*.jar app.jar
+
 
 ENTRYPOINT ["java","-jar","build/libs/Skillcheck-0.0.1-SNAPSHOT.jar"]
